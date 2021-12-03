@@ -183,62 +183,23 @@ angular.module('contractualClienteApp')
       //Petición para obtener la información de los contratos del contratista
       self.gridOptions1.data = [];
       //Petición para obtener las contratos relacionados al contratista
-      // cumplidosMidRequest.get('contratos_contratista/' + self.Documento)
-      //   .then(function (response) {
-      //     response.data.Data=[
-      //       {
-      //         "NumeroContratoSuscrito": "1265",
-      //         "Vigencia": "2021",
-      //         "NumeroCdp": "1668",
-      //         "VigenciaCdp": "2021",
-      //         "NumeroRp": "4553",
-      //         "VigenciaRp": "2021",
-      //         "NombreDependencia": "OFICINA ASESORA DE SISTEMAS",
-      //         "NumDocumentoSupervisor": "52204982"
-      //       }
-      //     ]
-      //     if (response.data.Data) {
-      //       //Contiene la respuesta de la petición
-      //       self.informacion_contratos = response.data.Data;
-      //       //Se envia la data a la tabla
-      //       self.gridOptions1.data = self.informacion_contratos;
-      //       //Contiene el numero de documento del Responsable
-      //       self.responsable = self.informacion_contratos[0].NumDocumentoSupervisor;
-      //     } else {
-      //       swal(
-      //         'Error',
-      //         'No se encontraron contratos vigentes asociados a su número de documento',
-      //         'error'
-      //       )
-      //     };
-      //   });
-
-        var Data=[
-          {
-            "NumeroContratoSuscrito": "1265",
-            "Vigencia": "2021",
-            "NumeroCdp": "1668",
-            "VigenciaCdp": "2021",
-            "NumeroRp": "4553",
-            "VigenciaRp": "2021",
-            "NombreDependencia": "OFICINA ASESORA DE SISTEMAS",
-            "NumDocumentoSupervisor": "52204982"
-          }
-        ]
-        if (Data) {
-          //Contiene la respuesta de la petición
-          self.informacion_contratos = Data;
-          //Se envia la data a la tabla
-          self.gridOptions1.data = self.informacion_contratos;
-          //Contiene el numero de documento del Responsable
-          self.responsable = self.informacion_contratos[0].NumDocumentoSupervisor;
-        } else {
-          swal(
-            'Error',
-            'No se encontraron contratos vigentes asociados a su número de documento',
-            'error'
-          )
-        };
+      cumplidosMidRequest.get('contratos_contratista/' + self.Documento)
+        .then(function (response) {
+          if (response.data.Data) {
+            //Contiene la respuesta de la petición
+            self.informacion_contratos = response.data.Data;
+            //Se envia la data a la tabla
+            self.gridOptions1.data = self.informacion_contratos;
+            //Contiene el numero de documento del Responsable
+            self.responsable = self.informacion_contratos[0].NumDocumentoSupervisor;
+          } else {
+            swal(
+              'Error',
+              'No se encontraron contratos vigentes asociados a su número de documento',
+              'error'
+            )
+          };
+        });
     };
 
     /*
@@ -430,6 +391,7 @@ angular.module('contractualClienteApp')
       self.seleccionado = false;
       self.gridOptions2.data = [];
       self.contrato = contrato;
+      console.log(self.contrato)
       //self.obtener_informacion_coordinador(self.contrato.IdDependencia);
       cumplidosCrudRequest.get('pago_mensual', $.param({
         query: "NumeroContrato:" + self.contrato.NumeroContratoSuscrito + ",VigenciaContrato:" + self.contrato.Vigencia + ",DocumentoPersonaId:" + self.Documento,
@@ -442,7 +404,7 @@ angular.module('contractualClienteApp')
 
 
             cumplidosCrudRequest.get("item_informe_tipo_contrato", $.param({
-              query: "TipoContratoId:" + self.tipo_contrato,
+              query: "TipoContratoId:" + self.tipo_contrato+",Activo:true",
               limit: 0
             })).then(function (response_iitc) {
 

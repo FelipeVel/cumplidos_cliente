@@ -51,6 +51,7 @@ angular
         'administrativaService',
         'cumplidosCrudService',
         'cumplidosMidService',
+        'titanMidService',
         'agoraService',
         'oikosService',
         'financieraMidService',
@@ -68,6 +69,7 @@ angular
         'colombiaHolidaysService',
         'nuxeoClient',
         'core',
+        'utilsService',
         'pdf'
     ])
     .run(function(amMoment) {
@@ -119,7 +121,7 @@ angular
               controller: 'AprobacionOrdenadorCtrl',
               controllerAs: 'aprobacionOrdenador'
             })
-            .when('/seguimientoycontrol/tecnico/InformeG_y_CertificadoC/:contrato/:anio/:mes', {
+            .when('/seguimientoycontrol/tecnico/InformeG_y_CertificadoC/:contrato/:vigencia/:cdp/:vigencia_cdp/:anio/:mes', {
                 templateUrl: 'views/seguimientoycontrol/tecnico/informe_gestion_y_certificado_cumplimiento.html',
                 controller: 'InformeGyCertificadoCCtrl',
                 controllerAs: 'InformeGyCertificadoC'

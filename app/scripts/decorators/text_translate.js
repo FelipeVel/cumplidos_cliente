@@ -806,6 +806,13 @@ var text_es = {
     ACC: "ACCIONES",
     EDITAR: "EDITAR",
     ELIMINAR: "ELIMINAR REGISTRO",
+    PRELIQUIDACION:"Detalle preliquidacion",
+    CONCEPTO:"Concepto",
+    VALOR:"Valor",
+    TOTAL_PAGAR:"Total a pagar:",
+    TOTAL_DESC:"Total descuentos:",
+    TOTAL_DEV:"Total devengado:",
+    REALIZA_PAGO:"",
 
     //Módulo aprobación documentos
     TITULO_APRO_DOC: "APROBACIÓN CUMPLIDOS",

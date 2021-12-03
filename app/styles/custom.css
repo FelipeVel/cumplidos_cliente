@@ -16,5 +16,25 @@
 }
 
 .label-no-padding{
-  padding: 0px;
+  padding: 0p;
+}
+
+.btn:hover{
+  Color: #fff;
+}
+
+.alineacion_derecha {
+  text-align: right;
+}
+
+.devengo {
+  background: #8BB9CD !important;
+}
+
+.descuento {
+  background: #FFB2B2 !important;
+}
+
+.seguridad_social {
+  background: #A9F5D0 !important;
 }

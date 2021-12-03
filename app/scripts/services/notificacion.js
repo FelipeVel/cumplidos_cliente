@@ -12,7 +12,7 @@
 angular.module('contractualClienteApp')
     .factory('notificacion', function ( CONF, configuracionRequest, token_service, $websocket, $interval) {
         var TIME_PING = 50000;
-
+        var path = CONF.GENERAL.NOTIFICACION_MID_SERVICE;
         var log = [];
         var payload = {};
         var notificacion_estado_usuario = [];
